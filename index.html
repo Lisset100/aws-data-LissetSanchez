@@ -11,12 +11,95 @@
     rel="stylesheet"
   >
 
+  <!-- Iconos -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
+
   <style>
+    /* Fondo con degradado y animación sutil */
     body {
-      background-color: #f8f9fa;
+      background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+      min-height: 100vh;
+      overflow-x: hidden;
+      animation: bgMove 10s ease-in-out infinite alternate;
     }
+
+    @keyframes bgMove {
+      from { background-position: 0 0; }
+      to { background-position: 100% 100%; }
+    }
+
+    /* Navbar con sombra suave */
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    /* Título animado */
+    h1 {
+      animation: fadeDown 1.2s ease-in-out;
+      font-weight: 700;
+      color: #212529;
+    }
+
+    @keyframes fadeDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Contenedor centrado */
     .container {
+      margin-top: 100px;
+      max-width: 700px;
+    }
+
+    /* Tarjetas animadas */
+    .list-group-item {
+      border: none;
+      margin: 10px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .list-group-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      background-color: #e3f2fd;
+    }
+
+    /* Pequeño fade al cargar los proyectos */
+    .list-group {
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer simple */
+    footer {
       margin-top: 80px;
+      padding: 20px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -25,27 +108,35 @@
   <!-- Encabezado -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Portafolio de Benjamin</a>
+      <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-code"></i> Portafolio de Lisset
+      </a>
     </div>
   </nav>
 
   <!-- Contenido principal -->
   <div class="container text-center">
     <h1 class="my-5">Bienvenido a mi portafolio</h1>
-    <p class="lead">Explora los siguientes proyectos:</p>
+    <p class="lead mb-4">Explora los siguientes proyectos:</p>
 
     <div class="list-group">
       <a href="proyecto1.html" class="list-group-item list-group-item-action">
-        Proyecto 1 - Automatización con Python
+        <i class="fa-brands fa-python me-2"></i>Proyecto 1 — Automatización con Python
       </a>
       <a href="proyecto2.html" class="list-group-item list-group-item-action">
-        Proyecto 2 - DevOps & CI/CD
+        <i class="fa-solid fa-gears me-2"></i>Proyecto 2 — DevOps & CI/CD
       </a>
       <a href="proyecto3.html" class="list-group-item list-group-item-action">
-        Proyecto 3 - Visualización de Datos
+        <i class="fa-solid fa-chart-line me-2"></i>Proyecto 3 — Visualización de Datos
       </a>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    Hecho con ❤️ por <strong>Lisset Sánchez</strong> | 
+    <a href="https://github.com/" target="_blank">GitHub</a>
+  </footer>
 
   <!-- Bootstrap JS -->
   <script 
