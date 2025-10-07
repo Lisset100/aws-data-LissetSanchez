@@ -1,6 +1,6 @@
 # 🚀 Guía Completa de Instalación y Preparación del Entorno de Trabajo en EC2
 
-## Tabla de Contenidos 📋 
+## Tabla de Contenidos 
 1. [Introducción](#introducción)
 2. [Prerrequisitos](#prerrequisitos)
 3. [Conceptos Clave](#conceptos-clave)
@@ -9,7 +9,7 @@
 
 ---
 
-## Introducción 🎯
+## Introducción 
 
 Esta guía te ayuda a configurar un servidor Ubuntu en AWS EC2 para trabajar con **Python, Docker, Docker Compose y análisis de datos**. Al finalizar, tendrás un entorno profesional y escalable para proyectos de ciencia de datos.
 
@@ -20,7 +20,7 @@ Esta guía te ayuda a configurar un servidor Ubuntu en AWS EC2 para trabajar con
 - **Entorno consistente**: Mismo ambiente para todo el equipo
 ---
 
-## Prerrequisitos 📦
+## Prerrequisitos 
 
 ### En tu computadora local:
 - [ ] Windows PowerShell (o terminal en Mac/Linux)
@@ -35,7 +35,7 @@ Esta guía te ayuda a configurar un servidor Ubuntu en AWS EC2 para trabajar con
 
 ---
 
-## Conceptos Clave ✨
+## Conceptos Clave
 
 ### ¿Qué es EC2?
 **Amazon Elastic Compute Cloud (EC2)** es un servicio que proporciona servidores virtuales en la nube.
