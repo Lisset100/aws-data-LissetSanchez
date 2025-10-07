@@ -397,7 +397,7 @@ head -n 1 netflix_titles.csv | tr ',' '\n'
 
 ---
 
-## ✅ Buenas Prácticas
+## Buenas Prácticas
 
 ### 🔒 Seguridad
 
