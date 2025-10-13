@@ -1,6 +1,5 @@
 
 # Importación de Librerías
-
 import boto3              # Para conectarse a Amazon S3
 import pandas as pd       # Para trabajar con datos (tablas)
 import json               # Para leer los archivos JSON
@@ -14,13 +13,9 @@ import io    #Para manejar flujos de datos en memoria
 st.set_page_config(
     page_title="Dashboard Simple",  # Título en la pestaña del navegador
     page_icon="🖥️",                
-    layout="wide"                    # Significa que usa todo el ancho de la pantalla
+    layout="wide"                  # Significa que usa todo el ancho de la pantalla
 )
 
-
-# Configuración de AWS S3
-BUCKET_NAME = "xideralaws-curso-benjamin2"  # Nombre del bucket (carpeta) en S3
-PREFIX = "raw/"                              # Subcarpeta dentro del bucket
 
 # Crear conexión con S3
 s3 = boto3.client("s3")  # Puerta para acceder a S3
@@ -38,8 +33,6 @@ def cargar_datos_desde_s3():
     return df
 
 
-
-#Título del dashboard 
 
 # Título principal
 st.title("🖥️ Dashboard de Monitoreo")
@@ -63,12 +56,11 @@ with st.sidebar:
  
 
 # Carga de datos
-# Mostrar un mensaje mientras carga
+# Muestra un mensaje mientras carga
 with st.spinner("Cargando datos desde S3..."):
-    # Llamamos a la función para cargar los datos
     df = cargar_datos_desde_s3()
 
-# Mostramos mensaje de éxito
+# Se muestra mensaje de éxito
 st.success(f" Se cargaron {len(df)} registros correctamente")
 
 
@@ -76,11 +68,11 @@ st.success(f" Se cargaron {len(df)} registros correctamente")
 st.subheader("📊KPIs-Estados")
 
 # Contar cuántos registros hay de cada estado
-#len() significa “length” y sirve para contar cuántos elementos hay
+#El len() significa “length” y sirve para contar cuántos elementos hay
 
-total_ok = len(df[df['status'] == 'OK'])        # Contar solo los OK
-total_warn = len(df[df['status'] == 'WARN'])    # Contar solo los WARN
-total_error = len(df[df['status'] == 'ERROR'])  # Contar solo los ERROR
+total_ok = len(df[df['status'] == 'OK'])        
+total_warn = len(df[df['status'] == 'WARN'])   
+total_error = len(df[df['status'] == 'ERROR'])  
 
 # Crea 3 columnas para mostrar los números
 col1, col2, col3 = st.columns(3)
@@ -105,9 +97,8 @@ with col3:
 
 st.markdown("---")
 
-# FILTRO DE ESTADO
 
-
+# Filtro de estado
 with st.sidebar:
     st.markdown("---")  # Línea divisoria
     st.header("🔍 Filtros")
@@ -120,18 +111,16 @@ with st.sidebar:
     )
 
 # Aplicación de el filtro por estado
-# Crear copia de los datos
+# Crea una copia de los datos para no manipular el df real
 df_filtrado = df.copy()
 
 # Si el usuario elige algo diferente de "Todos" se filtra
 if filtro_estado != "Todos":
     df_filtrado = df_filtrado[df_filtrado['status'] == filtro_estado]
 
-
 # Filtro por servidor
-
 with st.sidebar:
-    # Obtener lista de servidores únicos
+    # Obtiene y ordena la lista de servidores únicos que existen
     lista_servidores = df['server_id'].unique()
     lista_servidores = sorted(lista_servidores)
     
