@@ -16,8 +16,7 @@ st.set_page_config(
 )
 
 # CONEXIÓN CON AWS S3
-s3 = boto3.client("s3")
-
+s3 = boto3.client("s3", region_name="us-west-1")
 BUCKET_NAME = "xideralaws-curso-lisset"
 CARPETA_CLEAN = "clean/"
 
