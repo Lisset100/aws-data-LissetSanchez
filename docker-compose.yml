@@ -5,7 +5,7 @@ services:
     build: .                   # <- construye la imagen usando el Dockerfile en este directorio
     container_name: taxi_dashboard
     ports:
-      - "8152:8152"
+      - "8502:8502"
     env_file:
       - .env                   # carga tus secrets desde .env
     restart: unless-stopped
