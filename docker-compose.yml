@@ -1,11 +1,15 @@
 version: "3.9"
 
 services:
-  streamlit:
-    build: .                   # <- construye la imagen usando el Dockerfile en este directorio
-    container_name: Análisis musical global
+  music_dashboard:
+    build: .  # Construye la imagen usando el Dockerfile en este directorio
+    container_name: music_dashboard
     ports:
       - "8502:8502"
     env_file:
-      - .env                   # carga tus secrets desde .env
+      - .env  # Carga las variables definidas por el workflow (por ejemplo, BUCKET_NAME)
+    command: >
+      streamlit run music_analysis_dashboard.py
+      --server.port 8502
+      --server.address 0.0.0.0
     restart: unless-stopped
