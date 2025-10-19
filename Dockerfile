@@ -11,7 +11,7 @@ WORKDIR /app
 COPY music_analysis_dashboard.py /app/
 
 # Exponer el puerto de Streamlit
-EXPOSE 8152
+EXPOSE 8502
 
 # Comando para correr Streamlit
 CMD ["streamlit", "run", "music_analysis_dashboard.py", "--server.port=8152", "--server.address=0.0.0.0"]
