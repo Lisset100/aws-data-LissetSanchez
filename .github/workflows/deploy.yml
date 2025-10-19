@@ -1,4 +1,4 @@
-name: Deploy (Self-hosted + docker-compose + prod env)
+name: Deploy Streamlit Dashboard
 
 on:
   push:
@@ -13,24 +13,44 @@ jobs:
   deploy:
     runs-on: self-hosted
     environment: prod
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Create .env with S3 bucket
+      
+      - name: Create .env file with AWS credentials
         shell: bash
         run: |
-          set -euo pipefail
-          echo "BUCKET_NAME=xideralaws-curso-lisset" > .env
+          cat > .env << 'ENVEOF'
+          AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }}
+          S3_BUCKET_NAME=${{ secrets.S3_BUCKET_NAME }}
+          ENVEOF
           chmod 600 .env
-
-      - name: Build & Up with docker-compose
+          
+      - name: Stop existing containers
         shell: bash
         run: |
-          set -e
           docker-compose down --remove-orphans || true
+      
+      - name: Build and start containers
+        shell: bash
+        run: |
           docker-compose up -d --build
+      
+      - name: Wait for container to be healthy
+        shell: bash
+        run: |
+          sleep 10
           docker-compose ps
-          docker logs --tail music_dashboard || true
-
+      
+      - name: Show container logs
+        shell: bash
+        run: |
+          docker logs music_dashboard --tail 50 || true
+      
+      - name: Verify deployment
+        shell: bash
+        run: |
+          curl -f http://localhost:8502 || echo "Warning: App might not be ready yet"
