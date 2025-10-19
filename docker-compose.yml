@@ -7,7 +7,7 @@ services:
     ports:
       - "8502:8502"
     env_file:
-      - .env  # Carga las variables definidas por el workflow (por ejemplo, BUCKET_NAME)
+      - .env  
     command: >
       streamlit run music_analysis_dashboard.py
       --server.port 8502
