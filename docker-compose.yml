@@ -6,13 +6,11 @@ services:
     container_name: music_dashboard
     ports:
       - "8502:8502"
-    env_file:
-      - .env
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
-      - BUCKET_NAME=${BUCKET_NAME}
+      - BUCKET_NAME=${S3_BUCKET_NAME}  # Tu nombre de bucket
     command: >
       streamlit run music_analysis_dashboard.py
       --server.port 8502
