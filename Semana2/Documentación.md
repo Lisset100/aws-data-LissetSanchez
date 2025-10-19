@@ -94,7 +94,7 @@ El sistema genera 5 datasets en S3:
 | `spotify_new_releases.parquet` | Nuevos lanzamientos |
 | `tracks_enriched_cross_platform.parquet` | Canciones con métricas combinadas |
 
-## 📈 Análisis Disponibles
+## Análisis Disponibles
 
 ### 1. Ranking Global
 Top artistas más escuchados con análisis de concentración de reproducciones.
@@ -111,10 +111,10 @@ Detección de artistas con alto potencial de crecimiento usando filtros ajustabl
 ### 5. Nuevos Lanzamientos
 Tendencias en releases recientes por tipo (single, álbum, EP).
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 **Backend**:
-- Python 3.11
+- Python 3.12
 - AWS Lambda (ETL)
 - boto3 (AWS SDK)
 - pandas (procesamiento de datos)
@@ -129,20 +129,8 @@ Tendencias en releases recientes por tipo (single, álbum, EP).
 - Amazon EventBridge (automatización)
 - GitHub Actions (CI/CD)
 
-## 📁 Estructura del Proyecto
 
-```
-.
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # Workflow de deployment
-├── music_analysis_dashboard.py # Dashboard Streamlit
-├── docker-compose.yml          # Orquestación de servicios
-├── Dockerfile                  # Imagen del dashboard
-└── README.md                   # Esta documentación
-```
-
-## 🔧 Configuración Local
+## Configuración Local
 
 Para desarrollo local:
 
@@ -160,47 +148,14 @@ export S3_BUCKET_NAME=xideralaws-curso-lisset
 streamlit run music_analysis_dashboard.py
 ```
 
-## 🔍 Troubleshooting
 
-### Error: No se pueden cargar los datos
+##  Autor
 
-**Causa**: Falta configuración de credenciales AWS
-
-**Solución**: 
-```bash
-# Verificar variables de entorno en el contenedor
-docker exec music_dashboard env | grep AWS
-
-# Si faltan, revisar archivo .env y secrets de GitHub
-```
-
-### Error: Container no inicia
-
-**Causa**: Puerto 8502 ocupado o error en credenciales
-
-**Solución**:
-```bash
-# Ver logs detallados
-docker logs music_dashboard --tail 100
-
-# Verificar puertos
-netstat -tulpn | grep 8502
-```
-
-## 📝 Notas Importantes
-
-- ⚠️ **No subir archivo `.env` a GitHub** - Está en `.gitignore`
-- 🔄 El ETL Lambda se ejecuta semanalmente (domingos 12:00 UTC)
-- 📊 Los datos se actualizan automáticamente en el dashboard
-- 🔒 Las credenciales se manejan vía GitHub Secrets (producción) o `.env` (local)
-
-## 👥 Autor
-
-**Lisset** - Xideral AWS Curso
+**Lisset** - Xideral AWS Data Curso
 
 ## 📄 Licencia
 
-Proyecto educativo - Xideral AWS Training
+Proyecto educativo - Xideral AWS Data Training
 
 ---
 
