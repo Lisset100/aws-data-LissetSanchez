@@ -16,7 +16,7 @@ Es un sistema automatizado que extrae, transforma y analiza datos musicales de d
 ```
 APIs (Spotify + Last.fm)
          ↓
- Tres AWS Lambdas (ETL) 
+Tres AWS Lambdas (ETL) 
          ↓
 Amazon S3 (Storage)
          ↓
@@ -82,7 +82,7 @@ docker-compose up -d --build
 docker logs music_dashboard -f
 ```
 
-## 📊 Datasets
+## Datasets
 
 El sistema genera 5 datasets en S3:
 
@@ -153,7 +153,7 @@ streamlit run music_analysis_dashboard.py
 
 **Lisset** - Xideral AWS Data Curso
 
-## 📄 Licencia
+## Licencia
 
 Proyecto educativo - Xideral AWS Data Training
 
