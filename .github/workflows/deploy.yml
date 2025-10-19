@@ -18,16 +18,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create .env from prod secrets
+      - name: Create .env with S3 bucket
         shell: bash
         run: |
           set -euo pipefail
-          {
-            echo "DB_HOST=${{ secrets.DB_HOST }}";
-            echo "DB_NAME=${{ secrets.DB_NAME }}";
-            echo "DB_USER=${{ secrets.DB_USER }}";
-            echo "DB_PASS=${{ secrets.DB_PASS }}";
-          } > .env
+          echo "BUCKET_NAME=xideralaws-curso-lisset" > .env
           chmod 600 .env
 
       - name: Build & Up with docker-compose
@@ -37,4 +32,5 @@ jobs:
           docker-compose down --remove-orphans || true
           docker-compose up -d --build
           docker-compose ps
-          docker logs --tail 50 taxi_dashboard || true
+          docker logs --tail music_dashboard || true
+
